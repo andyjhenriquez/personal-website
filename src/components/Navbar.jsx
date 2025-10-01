@@ -14,7 +14,7 @@ export default function Navbar() {
           <li><a href="#contact" className="opacity-80 hover:opacity-100">Contact</a></li>
           <li>
             <a
-              href="/Kevin_Henriquez_Resume.pdf"
+              href="/Andy_Henriquez_Resume_Oct2025.pdf"
               download
               target="_blank"
               rel="noopener"
