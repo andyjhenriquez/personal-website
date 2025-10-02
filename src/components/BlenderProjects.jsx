@@ -82,10 +82,11 @@ export default function BlenderProjects() {
               <div className="rounded-2xl border border-neutral-800 overflow-hidden">
                 <ThreeModelCard
                   modelUrl={selected.modelUrl}
-                  title={null}                 // no small title under canvas
+                  title={null}
                   distance={selected.distance}
                   pitchDeg={selected.pitchDeg}
-                  spinnerSize={64}             // larger spinner for modal
+                  spinnerSize={64}
+                  preferLowPower={true}
                 />
               </div>
             </div>
