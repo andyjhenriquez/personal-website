@@ -1,22 +1,16 @@
 // src/components/ThreeModelCard.jsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
-/**
- * Props:
- * - modelUrl: string (required) => /models/your_model.glb (served from /public)
- * - title: string
- * - rotateY: number (deg per frame), default 0.3
- * - distance: number (how far camera is from model center), default 2.4
- * - pitchDeg: number (how many degrees the camera looks downward), default 15
- */
 export default function ThreeModelCard({
   modelUrl,
   title,
-  rotateY = 0.3,
+  rotateY = 0.2,
   distance = 2.4,
   pitchDeg = 15,
+  spinnerSize = 36,
 }) {
   const containerRef = useRef(null);
   const rendererRef = useRef(null);
@@ -24,6 +18,7 @@ export default function ThreeModelCard({
   const cameraRef = useRef(null);
   const animRef = useRef(null);
   const modelGroupRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -49,10 +44,9 @@ export default function ThreeModelCard({
     cameraRef.current = camera;
 
     // Position camera using distance and downward pitch
-    // Pitch is measured from the horizontal plane (0° = level, 90° = straight down)
     const rad = (pitchDeg * Math.PI) / 180;
-    const y = Math.sin(rad) * distance;   // up component
-    const z = Math.cos(rad) * distance;   // forward distance
+    const y = Math.sin(rad) * distance; // up component
+    const z = Math.cos(rad) * distance; // forward distance
     camera.position.set(0, y, z);
     camera.lookAt(0, 0, 0);
 
@@ -72,12 +66,17 @@ export default function ThreeModelCard({
     const loader = new GLTFLoader();
     let disposed = false;
 
+    const finishLoadingSafely = () => {
+      if (!disposed) setIsLoading(false);
+    };
+
     const addFallback = () => {
       const geo = new THREE.BoxGeometry(1, 1, 1);
       const mat = new THREE.MeshStandardMaterial({ color: 0xffffff });
       const mesh = new THREE.Mesh(geo, mat);
       modelGroup.add(mesh);
       fitGroupToUnitBox(modelGroup, 1.2);
+      finishLoadingSafely();
     };
 
     loader.load(
@@ -86,6 +85,7 @@ export default function ThreeModelCard({
         if (disposed) return;
         modelGroup.add(gltf.scene);
         fitGroupToUnitBox(modelGroup, 1.2);
+        finishLoadingSafely();
       },
       undefined,
       () => {
@@ -151,13 +151,25 @@ export default function ThreeModelCard({
 
   return (
     <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-4 md:p-5 shadow-soft">
-      <div
-        ref={containerRef}
-        className="aspect-square rounded-xl border border-neutral-800 overflow-hidden"
-      />
-      <div className="mt-4 text-center">
-        <h3 className="text-lg font-medium">{title}</h3>
+      <div className="relative">
+        {/* Canvas container */}
+        <div
+          ref={containerRef}
+          className="aspect-square rounded-xl border border-neutral-800 overflow-hidden"
+        />
+        {/* Loading Spinner Overlay */}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <LoadingSpinner size={spinnerSize} />
+          </div>
+        )}
       </div>
+
+      {title ? (
+        <div className="mt-4 text-center">
+          <h3 className="text-lg font-medium">{title}</h3>
+        </div>
+      ) : null}
     </div>
   );
 }

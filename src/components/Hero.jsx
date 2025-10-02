@@ -16,9 +16,8 @@ export default function Hero() {
             Andy Henriquez
           </h1>
           <p className="mt-6 text-neutral-300 max-w-prose">
-            I’m a Computer Science graduate (Magna Cum Laude, UCF) and currently pursuing my Master’s in CS, specializing in VR/AR development, simulations, and video games. 
-            I’ve built projects across a range of modern development platforms and I’m passionate about creating immersive 
-            and impactful interactive systems.
+            I’m a Computer Science graduate (Magna Cum Laude, UCF) and currently pursuing my Master’s in Computer Science, with a focus on software development and emerging technologies. 
+            I have built projects across a variety of modern development platforms and am passionate about creating immersive, interactive systems.
           </p>
           <div className="mt-6 text-sm text-neutral-400 font-mono">
             <span className="opacity-70">Languages:</span> <span>C# • C++ • C • python • java • javascript • html • css</span>

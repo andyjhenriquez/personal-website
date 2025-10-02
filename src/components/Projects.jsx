@@ -17,21 +17,21 @@ const projects = [
     title: "'House of Nevermore' Dark Ride",
     img: p1,
     bigImg: p1big,
-    desc: "A dark ride based on Edgar Allan Poe's 'The Raven' pitched to the Unviersal Creative team.",
+    desc: "A dark ride based on Edgar Allan Poe's \"The Raven\", pitched to the Universal Creative team.",
     longDesc:
-      `Guests are cursed and taken through the "House of Nevermore" aboard this chilling dark ride. Complete ride was designed from the ground up taking into account safety, budget, story, and more
+      `Guests are cursed and taken through the "House of Nevermore" aboard this chilling dark ride. The ride was designed from the ground up taking into account safety, budget, story, and more
        with the help of the Unviersal Creative team at the UCF Universal Creative Lab. Visualized and showcased with the Meta Quest 2 using the Unity Engine by creating a spline based tool for controlling the ride vehicle.
-       Some props and the ride vehicle were modeled and textured using Blender`,
+       Some props and the ride vehicle were modeled and textured using Blender.`,
     link: "#"
   },
   {
     title: "Snowboard Simulator",
     img: p4,
     bigImg: p4big,
-    desc: "A VR App where you can carve the slopes by controlling the virtual snowboard board with a real physical one.",
+    desc: "A VR app where you carve the slopes by controlling a virtual snowboard with a real, physical board.",
     longDesc:
-      `The software was created using Unity and XR Interaction Toolkit and built for the Meta Quest 2. The physical board itself was done by using a CNC to cut the base, using rails and springs to attach a Freebord
-      deck to the base, and sticking a VIVE tracker on top the deck. The VIVE tracker was being tracked by 2 VIVE Base Stations which would be sending the rotational and positional vectors of the
+      `The software was created using Unity and XR Interaction Toolkit and built for the Meta Quest 2. The physical board was built using a CNC to cut the base, with rails and springs attaching a Freebord deck to it, and 
+      sticking a VIVE tracker on top of the deck. The VIVE tracker was being tracked by two VIVE Base Stations which would be sending the rotational and positional vectors of the
       board to the Unity app.`,
     link: "#"
   },
@@ -39,9 +39,9 @@ const projects = [
     title: "NASA SEE",
     img: p2,
     bigImg: p2big,
-    desc: "Led a software development team in creating a lunar simulation.",
+    desc: "Led a software development team to create a lunar simulations.",
     longDesc:
-      `Sponsored by the Florida Space Institute for creating a simulation for the NASA Simulation Exploration Experience event. We simulated extracting ice from the bottom of a lunar 
+      `Sponsored by the Florida Space Institute, this project created simulations for NASA’s Simulation Exploration Experience event. We simulated extracting ice from the bottom of a lunar 
       crater in the permanently shadowed region of the Moon. We created the simulations with NVIDIA PhysX and Omniverse using the HLA (High Level Architecture) standard for distributed simulations.`,
     link: "#"
   },
@@ -49,21 +49,21 @@ const projects = [
     title: "Cleanroom Safety Training",
     img: p3,
     bigImg: p3big,
-    desc: "AR safety training tour built for the UCF Cleanroom.",
+    desc: "An AR safety training tour built for the UCF Cleanroom.",
     longDesc:
       `Designed for the XREAL Air 2 Ultra augmented reality glasses, this safety training assists cleanroom personnel by efficiently and quickly training new members with this safety tour of the cleanroom.
-      Created using Unity, uses text-to-speech to auditorily inform users of the safety step they are on and then displays 3D arrows on the floor to guide users to the next step. Input is controlled via the
-      XREAL Beam Pro phone shown on the right side above.`,
+      Created in Unity, the app uses text-to-speech to inform users of each safety step and then displays 3D arrows on the floor to guide users to the next step. Input is controlled via the
+      XREAL Beam Pro phone, shown on the right side above.`,
     link: "#" 
   },
   {
     title: "EyeTK",
     img: p5,
     bigImg: p5big,
-    desc: "Eye tracking developmental tools to help other software developers.",
+    desc: "Eye tracking development tools to assist other software developers.",
     longDesc:
-      `Sponsored by Lockheed Martin, this project aimed to create eye tracking developmental tools. One of the bigger developmental tools created was a heatmap shader that could be
-      placed on any 3D object or UI canvas and would show a heatmap based off of the user's eye gaze. Tested and developed for the HoloLens 2.`,
+      `Sponsored by Lockheed Martin, this project aimed to create eye tracking developmental tools. One of the main tools developed was a heatmap shader that could be placed on any 3D object or UI canvas to display 
+      gaze-based heatmaps. Tested and developed for the HoloLens 2.`,
     link: "#"
   },
 ]

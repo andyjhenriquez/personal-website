@@ -36,7 +36,6 @@ export default function BlenderProjects() {
               {/* Same small card presentation */}
               <div className="aspect-square rounded-xl border border-neutral-800 overflow-hidden">
                 {/* Keep the spinning preview small by reusing ThreeModelCard internals */}
-                {/* For the list card, we keep it static image replacement isn’t desired; but we can reuse the same component: */}
                 <div className="pointer-events-none">
                   <ThreeModelCard
                     modelUrl={p.modelUrl}
