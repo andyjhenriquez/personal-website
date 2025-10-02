@@ -1,12 +1,35 @@
+// src/components/BlenderProjects.jsx
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Modal from "./Modal.jsx";
 import ThreeModelCard from "./ThreeModelCard.jsx";
 
+import thumbControl from "../assets/thumbs/ControlStation.png";
+import thumbRaven   from "../assets/thumbs/RavenRideVehicle.png";
+import thumbAstro   from "../assets/thumbs/PortalAstronaut.png";
+
 const blenderProjects = [
-  { title: "Computer Setup",        modelUrl: "/models/ControlStation.glb",     distance: 2.4, pitchDeg: 12 },
-  { title: "Raven Ride Vehicle",    modelUrl: "/models/RavenRideVehicle.glb",   distance: 2.1, pitchDeg: 15 },
-  { title: "Astronaut Game Jam",    modelUrl: "/models/PortalAstronaut.glb",    distance: 2.1, pitchDeg: 8 },
+  {
+    title: "Raven Ride Vehicle",
+    modelUrl: "/models/RavenRideVehicle.glb",
+    distance: 2.4,
+    pitchDeg: 15,
+    thumb: thumbRaven,
+  },
+  {
+    title: "Computer Setup",
+    modelUrl: "/models/ControlStation.glb",
+    distance: 2.4,
+    pitchDeg: 12,
+    thumb: thumbControl,
+  },
+  {
+    title: "Astronaut Game Jam",
+    modelUrl: "/models/PortalAstronaut.glb",
+    distance: 2.1,
+    pitchDeg: 8,
+    thumb: thumbAstro,
+  },
 ];
 
 export default function BlenderProjects() {
@@ -33,17 +56,14 @@ export default function BlenderProjects() {
               className="snap-start text-left bg-neutral-900/60 border border-neutral-800 rounded-2xl p-4 md:p-5 hover:border-neutral-600 transition-colors shadow-soft w-full"
               onClick={() => setSelected(p)}
             >
-              {/* Same small card presentation */}
+              {/* Thumbnail preview (no WebGL in list to avoid mobile crashes) */}
               <div className="aspect-square rounded-xl border border-neutral-800 overflow-hidden">
-                {/* Keep the spinning preview small by reusing ThreeModelCard internals */}
-                <div className="pointer-events-none">
-                  <ThreeModelCard
-                    modelUrl={p.modelUrl}
-                    title={p.title}
-                    distance={p.distance}
-                    pitchDeg={p.pitchDeg}
-                  />
-                </div>
+                <img
+                  src={p.thumb ?? "/images/model-placeholder.jpg"}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <div className="mt-4">
                 <h3 className="text-lg font-medium text-center">{p.title}</h3>
@@ -57,15 +77,15 @@ export default function BlenderProjects() {
       <Modal open={!!selected} onClose={() => setSelected(null)} ariaLabel="Blender project">
         {selected && (
           <div>
-            {/* Big square canvas on top */}
+            {/* Big square 3D view */}
             <div className="border-b border-neutral-800 p-4 md:p-5">
               <div className="rounded-2xl border border-neutral-800 overflow-hidden">
-                {/* Larger viewer: reuse ThreeModelCard but hide its built-in small title */}
                 <ThreeModelCard
                   modelUrl={selected.modelUrl}
-                  title={null}               // suppress small title under canvas
+                  title={null}                 // no small title under canvas
                   distance={selected.distance}
                   pitchDeg={selected.pitchDeg}
+                  spinnerSize={64}             // larger spinner for modal
                 />
               </div>
             </div>
